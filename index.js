@@ -208,25 +208,19 @@ Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
 //(1) Name of the first artist (0th index) in the array
-console.log(
-  artists[0].name
-);
+console.log(artists[0].name);
 
 
-// (2) Bio of the third artist (2nd index) in the array 
-console.log(
-  artists[2].bio
-);
+//(2) Bio of the third artist (2nd index) in the array 
+console.log(artists[2].bio)
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 (not auto tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Fix this issue and console.log() to check your work. */
-console.log(artists[8].name);
-artists[8].name = 'Vincent Van Gogh';
-console.log(artists[8].name);
 
-
+artists[8].name = 'Vincent Van Gogh'
+console.log(artists[8].name);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
 Use getArtistByIndex to do the following:
@@ -234,16 +228,14 @@ Use getArtistByIndex to do the following:
 2. Receive a number, which is the desired index in the array, as an argument from the SECOND parameter.
 3. Return a string in the format `the artist at index {id} is {name}`
 ❗❗ NOTE: THE STRING YOU RETURN MUST MATCH THE FORMAT ABOVE OR IT WILL NOT PASS THE TEST! ❗❗
-
 🌟 EXAMPLE: if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
+function getArtistByIndex(array, indexNum) {
 
-function getArtistByIndex(array, index) {
-  return `the artist at index ${array[index].id} is ${array[index].name}`
+  return `the artist at index ${array[indexNum].id} is ${array[indexNum].name}`
 }
 
 console.log(getArtistByIndex(artists, 0));
-
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use listOfNames to do the following: 
@@ -254,16 +246,21 @@ Use listOfNames to do the following:
 */
 
 function listOfNames(array) {
-  const cloneArr = [...array]
-  const newArray = []
+  //clone the origional array
+  const cloneArr = [...array];
+  //crate a vaiable to store the value of the 'only name's array in
+  const newArr = [];
+  //run a loop to extract the name properties from the index of the cloned array
   for (let i = 0; i < cloneArr.length; i++) {
-    newArray.push(cloneArr[i].name)
+    //INSIDE the curley brackets after the for loop push JUST the name properties into the newArr
+    newArr.push(cloneArr[i].name);
   }
-  return newArray
-
-};
-
+  // return the newArr
+  return newArr;
+}
 console.log(listOfNames(artists));
+
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use removeArtist to do the following:
@@ -274,15 +271,14 @@ Use removeArtist to do the following:
 5. Return the resulting copied array
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
-function removeArtist(origArr, indexNum) {
-  const cloneArr = [...origArr];
-  cloneArr.splice(indexNum, 1);
-  return cloneArr;
+function removeArtist(array, index) {
+  const cloneArr = [...array]
+  cloneArr.splice(index, 1)
+  // delete cloneArr[index].bio; how to delete key of object
+  return cloneArr
 }
 
-// console.log(removeArtist(artists, artists[0]));
-
-
+console.log(removeArtist(artists, 0));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use addArtist to do the following: 
@@ -300,88 +296,71 @@ Use addArtist to do the following:
 5. Add the newly created object to the copied array, then return the copied array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-// function addArtist(origArr, name, years, genre, nationality, bio) {
-//   const cloneArr = [...origArr];
-//   const obj = {
-//     name: name,
-//     years: years,
-//     genre: genre,
-//     nationality: nationality,
-//     bio: bio,
-//   };
-//   cloneArr.push(obj);
-//   return cloneArr;
-// }
-
-
 function addArtist(array, name, years, genre, nationality, bio) {
-  const cloneArr = [...array];
+  const cloneArr = [...array]
   const obj = {
-    name: 'Kristofer Martinez',
-    years: '1991 - 2022',
-    genre: 'Web Design',
-    nationality: 'USA',
-    bio: "I'm an operating engineer by trade. I'm attending BloomTech full stack web developement program.";
-  };
+    name: name,
+    years: years,
+    genre: genre,
+    nationality: nationality,
+    bio: bio
+  }
   cloneArr.push(obj)
-  return cloneArr;
+  return cloneArr
 }
-
-console.log(addArtist(artists, 'Kristofer Martinez', '1991 - 2022', 'Web Design', 'USA', "I'm an operating engineer by trade. I'm attending BloomTech full stack web developement program."));
-
+console.log(artists, 'Kritofer Martinez', '1991 - 2022', 'Full Stack Web Developement', 'USA', "I'm attending BloomTech full stack web developement program.")
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use lotsOfArt to do the following: 
 1. Receive the artist array as an argument passed from a parameter  
 2. Return an array with names of artists in the received array who painted more than 100 paintings.
-
 🌟 EXAMPLE: lotsOfArt(artists) will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]
 */
 
-function lotsOfArt(origArr) {
-  // decalre new array to populate later
-  let artistsWithMoreThan100Paintings = [];
-  // loop all artists
-  for (let idx = 0; idx < origArr.length; idx++) {
-    if (origArr[idx].paintings > 100) {
-      artistsWithMoreThan100Paintings.push(
-        origArr[idx].name
-      )
+function lotsOfArt(array) {
+  //need new variable to store painters with 100 paintings in
+  const club100 = []
+  //loop through array
+  for (let i = 0; i < array.length; i++) {
+    //separate out the club100 painters
+    //if artists has more than 100 paintings
+    if (array[i].paintings > 100) {
+      //put into club100 group
+      club100.push(array[i].name);
     }
+
   }
-  // return array that only contains artists with more than 100 paintings
-  return artistsWithMoreThan100Paintings;
+  return club100
 }
 
-// console.log('lotsOfArt output -> ', lotsOfArt(artists));
+console.log('My answer to lotsOfArt --> ', lotsOfArt(artists));
+
+
+
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 8: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use artistInfo to do the following: 
 1. Receive the artist array as an argument passed from the FIRST parameter
 2. Receive a string (artist's name) as an argument passed from the SECOND parameter
 3. Return the artists bio
-
 🌟 EXAMPLE: Invoking artistInfo(artists, 'Frida Kahlo') will return: 
   "Frida Kahlo de Rivera (Spanish pronunciation: [ˈfɾiða ˈkalo]; born Magdalena Carmen Frida Kahlo y Calderón; 6 July 1907 – 13 July 1954) was a Mexican artist who painted many portraits, self-portraits and works inspired by the nature and artifacts of Mexico. Inspired by the country's popular culture, she employed a naïve folk art style to explore questions of identity, postcolonialism, gender, class and race in Mexican society. Her paintings often had strong autobiographical elements and mixed realism with fantasy. In addition to belonging to the post-revolutionary Mexicayotl movement, which sought to define a Mexican identity, Kahlo has been described as a surrealist or magical realist.Born to a German father and a mestiza mother, Kahlo spent most of her childhood and adult life at her family home in Coyoacán, La Casa Azul, now known and publicly accessible as the Frida Kahlo Museum. She was disabled by polio as a child. Until a traffic accident at age eighteen caused lifelong pain and medical problems, she had been a promising student headed for medical school. During her recovery, she returned to her childhood hobby of art with the idea of becoming an artist."
 */
 
-function artistInfo(origArr, artistsName) {
-  // decalre new variable for artist bio
-  let artistBio;
-  // loop all artists
-  for (let idx = 0; idx < origArr.length; idx++) {
-    // check if the artist at index idx matches artistsName
-    if (origArr[idx].name === artistsName) {
-      // capture the bio of this artist at idx in our declared variable above
-      artistBio = origArr[idx].bio;
+function artistInfo(array, name) {
+  let artBio;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].name === name) {
+      artBio = array[i].bio;
+      break;
     }
   }
-  // return new artist assigned to artistBio
-  return artistBio;
+  return artBio
 }
 
-// console.log(artistInfo(artists, 'Frida Kahlo'));
+console.log(artistInfo(artists, 'Frida Kahlo'));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 9: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use artistByCountry to do the following: 
@@ -389,28 +368,21 @@ Use artistByCountry to do the following:
 2. Receive a string (nationality) as an argument passed from the SECOND parameter
 3. Return an array of artist names who are ONLY of that nationality. 
 ⚠ NOTE: Artists who have more than one nationality should not be included in this new array.  
-
 🌟 EXAMPLE: Invoking artistByCountry(artists, 'Spanish') will return: [ 'Salvador Dali', 'Pablo Picasso', 'Francisco Goya']
 */
 
-function artistByCountry(origArr, nationality) {
-  // declare a new varialbe of type array to capture all artists whose nationality matches second argument
-  let artistNationality = [];
-  // loop all artists
-  for (let idx = 0; idx < origArr.length; idx++) {
-    // check nationality of each artist at for loop index
-    if (origArr[idx].nationality === nationality) {
-      // if artist matches, push to our new array
-      artistNationality.push(origArr[idx].name);
+function artistByCountry(array, nationality) {
+  const artNation = []
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].nationality === nationality) {
+      artNation.push(array[i].name)
     }
   }
-  // return new array
-  return artistNationality;
+  return artNation
 }
-
-let kjhdriughjksdf = artistByCountry(artists, 'Spanish');
-console.log(kjhdriughjksdf);
 console.log(artistByCountry(artists, 'Spanish'));
+
+
 /* ***** END OF TASKS ***** */
 
 
